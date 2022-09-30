@@ -7,6 +7,9 @@ db.connectDb()
 app.use(cors())
 app.use(express.json());app.use(express.urlencoded({extended : false}));app.use(limiter)
 // submit handler
+app.get("/" , (req , res)=>{
+  res.send("Wellcome to the page ")
+})
 app.use(Submitdata)
 
 
