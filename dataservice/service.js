@@ -1,6 +1,6 @@
-import  Model from "../models/u" 
+const Model = require("../models/u")
 
-export default class DataService{
+class DataService{
     constructor(name , email , message){
     this.name = name
     this.email = email
@@ -30,7 +30,11 @@ export default class DataService{
 
 
     }
-   
+
+    
+
     
 
 }
+
+module.exports = DataService

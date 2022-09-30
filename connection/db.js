@@ -1,25 +1,34 @@
-import * as dotenv from 'dotenv'
+const dotenv = require("dotenv")
 dotenv.config()
-import mongoose from "mongoose";
+const mongoose = require("mongoose")
 const uri = process.env.DB_URL
 
 
 
 
-export class DataBaseConnection {
+class DataBaseConnection {
    
      constructor (uri){
       this.uri = uri;
      }
      connectDb() {
-     
-mongoose.connect(uri , {useNewUrlParser: true, useUnifiedTopology: true})
-const db = mongoose.connection
-db.on("error", console.error.bind(console, "connection error: "));
-db.once("open", function () {
- console.log("Connected successfully");
-});
+    
+
+
+     try{
+        mongoose.connect(uri , {useNewUrlParser: true, useUnifiedTopology: true})
+        const db = mongoose.connection
+        db.on("error", console.error.bind(console, "connection error: "));
+        db.once("open", function () {
+         console.log("Connected successfully");
+        });
+     }catch(err){
+        console.log("Faild to connect")
+     }
+
+
     }
 }
 
+module.exports = DataBaseConnection
 

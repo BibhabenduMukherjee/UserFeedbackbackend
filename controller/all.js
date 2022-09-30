@@ -1,7 +1,7 @@
-import express from "express"
+const express = require("express")
 const router = express.Router()
-import Model from  '../models/u'
-import DataService from "../dataservice/service.js"
+
+const DataService = require("../dataservice/service")
 router.post( "/submit",async(req,res)=>{
   const {name , email , message} = req.body;
 //   var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
@@ -10,11 +10,18 @@ router.post( "/submit",async(req,res)=>{
 // }
 
 const user = new DataService(name , email  , message)
-const response =await user.addUser();
-res.status(201).send(response)
+try{
+  const response =await user.addUser();
+  res.status(201).send(response)
+}catch(err){
+  res.status(401)
+  console.log(err);
+}
+
+
 })
 
-export {router as Submitdata}
+module.exports = router 
 
 
 

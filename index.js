@@ -1,16 +1,31 @@
-import * as dotenv from 'dotenv';dotenv.config()
-import cors from "cors"
-import helmet from 'helmet';import  express  from 'express';const app = express();import { DataBaseConnection } from './connection/db';const uri = process.env.DB_URL
-app.use(helmet());import {Submitdata} from "./controller/all";import {limiter} from "./Blocker/limiter"
+const dotenv  = require("dotenv")
+dotenv.config()
+const cors = require("cors")
+const helmet = require("helmet")
+const express = require("express")
+const app = express();
+const DataBaseConnection  = require("./connection/db")
+const uri = process.env.DB_URL
+app.use(helmet());
+const router = require("./controller/all")
+
+const limiter = require("./Blocker/limiter")
+const DataService = require("./dataservice/service")
+
 const db = new DataBaseConnection(uri); 
 db.connectDb()
 app.use(cors())
-app.use(express.json());app.use(express.urlencoded({extended : false}));app.use(limiter)
+app.use(express.json());
+app.use(express.urlencoded({extended : false}));
+app.use(limiter)
 // submit handler
 app.get("/" , (req , res)=>{
   res.send("Wellcome to the page ")
 })
-app.use(Submitdata)
+
+
+
+app.use(router)
 
 
 app.listen(3001 , ()=>{

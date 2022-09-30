@@ -2,11 +2,11 @@
   "name": "appapi",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
+ 
   "main": "index.js",
   "scripts": {
     "start" : "node index.js",
-    "dev": "nodemon --experimental-modules --es-module-specifier-resolution=node index.js"
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
