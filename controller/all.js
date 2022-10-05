@@ -14,11 +14,11 @@ try{
   const response =await user.addUser();
   res.status(201).send(response)
 }catch(err){
-  
+  res.status(400).send({})
   console.log(err);
 }
 const {apikey} = req.query
-res.status(200).json({success : true})
+//res.status(200).json({success : true})
 })
 
 module.exports = router 

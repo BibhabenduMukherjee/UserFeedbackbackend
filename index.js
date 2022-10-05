@@ -21,14 +21,14 @@ app.disable('x-powered-by');
 app.use(express.json());
 app.use(express.urlencoded({extended : false}));
 app.use(limiter)
-app.use(apikeygateway)
+
 // submit handler
 app.get("/" , (req , res)=>{
   
   res.send("Wellcome to the page ")
 })
 
-
+app.use(apikeygateway)
 
 app.use(router)
 
