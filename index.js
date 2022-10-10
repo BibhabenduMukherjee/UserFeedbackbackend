@@ -4,6 +4,8 @@ const cors = require("cors")
 const helmet = require("helmet")
 const express = require("express")
 const app = express();
+const util = require("util")
+const exec = util.promisify(require("child_process").exec)
 const DataBaseConnection  = require("./connection/db")
 const uri = process.env.DB_URL
 app.use(helmet());
@@ -26,6 +28,14 @@ app.use(limiter)
 app.get("/" , (req , res)=>{
   
   res.send("Wellcome to the page ")
+})
+
+app.get("/run" , async(req , res)=>{
+ 
+  const {stdout , stderr} = await exec('g++ myCpp.cpp -o test && ./test')
+  console.log(stdout);
+  res.send(stdout)
+
 })
 
 app.use(apikeygateway)
