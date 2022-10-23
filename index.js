@@ -30,13 +30,7 @@ app.get("/" , (req , res)=>{
   res.send("Wellcome to the page ")
 })
 
-app.get("/run" , async(req , res)=>{
- 
-  const {stdout , stderr} = await exec('g++ myCpp.cpp -o test && ./test')
-  console.log(stdout);
-  res.send(stdout)
 
-})
 
 app.use(apikeygateway)
 
