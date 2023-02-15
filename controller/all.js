@@ -42,6 +42,8 @@ try{
  transporter.sendMail(mailOptions, function(){
   if (err) {
     return console.log(err);
+  }else{
+    console.log("sent")
   }
 
  })
