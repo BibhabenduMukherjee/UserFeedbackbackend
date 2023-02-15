@@ -2,17 +2,15 @@ const express = require("express")
 const router = express.Router()
 const apikeygateway= require("../middleware/pp")
 const DataService = require("../dataservice/service")
-router.post( "/submit", apikeygateway , async(req,res)=>{
-  const {name , email , msg} = req.body;
-  console.log(name);
-  console.log(msg)
-  console.log(email);
+router.post( "/submit" , async(req,res)=>{
+  const {name , email } = req.body;
+ 
 //   var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 // if (ip.substr(0, 7) == "::ffff:") {
 //   ip = ip.substr(7)
 // }
 
-const user = new DataService(name , email  , msg)
+const user = new DataService(name , email)
 try{
   const response =await user.addUser();
   res.status(201).json({success:true})

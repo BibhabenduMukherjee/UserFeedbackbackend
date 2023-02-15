@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const responseSchema = new mongoose.Schema({
     name : {type : String},
     email : {type : String},
-    message : {type : String}
+   
    
 })
 

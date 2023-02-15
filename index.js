@@ -14,7 +14,7 @@ const router = require("./controller/all")
 
 const limiter = require("./Blocker/limiter")
 const DataService = require("./dataservice/service")
-const apikeygateway = require("./middleware/pp")
+
 
 const db = new DataBaseConnection(uri); 
 db.connectDb()
@@ -31,9 +31,6 @@ app.get("/" , (req , res)=>{
   res.send("Wellcome to the page ")
 })
 
-
-
-app.use(apikeygateway)
 
 app.use(router)
 

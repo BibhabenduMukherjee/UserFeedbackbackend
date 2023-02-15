@@ -1,22 +1,22 @@
 const Model = require("../models/u")
 
 class DataService{
-    constructor(name , email , message){
+    constructor(name , email ){
     this.name = name
     this.email = email
-    this.message = message
+  
     }
 
-   returnResponce(msg){
-    console.log(msg)
-    return msg
+   returnResponce(){
+   // console.log(msg)
+    return "hello"
    }
     
     async addUser(){
         const user = new Model({
             name : this.name,
             email : this.email,
-            message : this.message
+           
         })
 
        try{
