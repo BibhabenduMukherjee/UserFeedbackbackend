@@ -18,7 +18,7 @@ router.post( "/submit" , async(req,res)=>{
   const sender = "Bibhabendu Mukherjee"
   const output = `Dear ${name},
 
-  Thank you for your recent Subcription from our store. We appreciate your Time !
+  Thank you for your recent Subcription from our store. We appreciate your Time !!
   
   If you have any questions or concerns, please don't hesitate to contact us.
   
