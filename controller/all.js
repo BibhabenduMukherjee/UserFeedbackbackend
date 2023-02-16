@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
 router.post( "/submit" , async(req,res)=>{
   const {name , email } = req.body;
   const sender = "Bibhabendu Mukherjee"
-  const output = `Dear ${name},
+  const output = `Dear <b>${name}</b>,
 
   Thank you for your recent Subcription from our store. We appreciate your Time !!
   
@@ -24,7 +24,10 @@ router.post( "/submit" , async(req,res)=>{
   
   Best regards,
   
-  ${sender}`;
+  ${sender}
+  
+  for further query email to <a href="mailto: mukherjee4004@gmail.com">mukherjee4004@gmail.com</a>
+  `;
 //   var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 // if (ip.substr(0, 7) == "::ffff:") {
 //   ip = ip.substr(7)
@@ -39,7 +42,7 @@ try{
     subject: "Email For Appreciation", // Subject line
     html: output, // plain text body
   };
- transporter.sendMail(mailOptions, function(){
+ transporter.sendMail(mailOptions, function(err,info){
   if (err) {
     return console.log(err);
   }else{
