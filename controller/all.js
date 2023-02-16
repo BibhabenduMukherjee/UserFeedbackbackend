@@ -42,14 +42,18 @@ try{
     subject: "Email For Appreciation", // Subject line
     html: output, // plain text body
   };
- transporter.sendMail(mailOptions, function(err,info){
-  if (err) {
-    return console.log(err);
-  }else{
-    console.log("sent")
-  }
-
- })
+  await new Promise((resolve, reject) => {
+    // send mail
+    transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+            console.error(err);
+            reject(err);
+        } else {
+            console.log(info);
+            resolve(info);
+        }
+    });
+});
  res.status(201).json({success:true})
   
 }catch(err){
