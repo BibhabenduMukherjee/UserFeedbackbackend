@@ -36,5 +36,6 @@ app.use(router)
 
 
 app.listen(3001 , ()=>{
+ /// console.log(process.env.SECRET_CODE)
   console.log("Server on");
 }) 
